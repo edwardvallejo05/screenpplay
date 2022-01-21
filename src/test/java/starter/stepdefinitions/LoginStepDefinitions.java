@@ -1,20 +1,33 @@
 package starter.stepdefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.actors.OnlineCast;
+import starter.login.DoLogin;
+import starter.navigation.NavigateTo;
+
+import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 
 public class LoginStepDefinitions {
 
-    @Given("User has an active account")
-    public void user_has_an_active_account() {
-        // Write code here that turns the phrase above into concrete actions
+    String name = "pepe";
+    @Before
+    public void setTheStage() {
+        OnStage.setTheStage(new OnlineCast());
     }
 
-    @When("he sends their valid Credencials")
-    public void he_sends_their_valid_credencials() {
-        // Write code here that turns the phrase above into concrete actions
+    @Given("^(.*) has an active account")
+    public void has_an_active_account(String name) {this.name = this.name;}
 
+    @When("he sends their valid credentials")
+    public void he_sends_their_valid_credentials() {
+       theActorCalled(name).attemptsTo(
+            NavigateTo.theDuckDuckGoHomePage(),
+            DoLogin.withCredentials( "pepito", "hola")
+       );
     }
 
     @Then("he should have access to the store")
