@@ -13,19 +13,19 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 
 public class LoginStepDefinitions {
 
-    String name = "pepe";
+    String name;
     @Before
     public void setTheStage() {
         OnStage.setTheStage(new OnlineCast());
     }
 
     @Given("^(.*) has an active account")
-    public void has_an_active_account(String name) {this.name = this.name;}
+    public void has_an_active_account(String name) {this.name = name;}
 
     @When("he sends their valid credentials")
     public void he_sends_their_valid_credentials() {
        theActorCalled(name).attemptsTo(
-            NavigateTo.theDuckDuckGoHomePage(),
+            NavigateTo.theSauceDemoGoHomePage(),
             DoLogin.withCredentials( "pepito", "hola")
        );
     }
