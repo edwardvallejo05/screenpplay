@@ -8,8 +8,12 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import starter.login.DoLogin;
 import starter.navigation.NavigateTo;
+import starter.shop.GetTextElements;
+import starter.shop.Store;
 
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class LoginStepDefinitions {
 
@@ -26,14 +30,15 @@ public class LoginStepDefinitions {
     public void he_sends_their_valid_credentials() {
        theActorCalled(name).attemptsTo(
             NavigateTo.theSauceDemoGoHomePage(),
-            DoLogin.withCredentials( "pepito", "hola")
+            DoLogin.withCredentials( "standard_user", "secret_sauce")
        );
     }
 
     @Then("he should have access to the store")
     public void he_should_have_access_to_the_store() {
-        // Write code here that turns the phrase above into concrete actions
-
+        theActorInTheSpotlight().should(
+                seeThat("Is Visible Title", GetTextElements.storeTitle(), equalTo("Products"))
+        );
     }
 
 }
