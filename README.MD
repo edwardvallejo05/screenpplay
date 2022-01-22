@@ -1,7 +1,7 @@
 
-##**README SAUCE DEMO**
+**README SAUCE DEMO**
 
-##**Run tests:**
+**Run tests:**
 ```
 ./gradlew clean test
 ```
@@ -17,6 +17,11 @@ Escenarios de Prueba Planteados
 - Pay a Purchase with Standard User
 
 Se adjunta como documentos extras:
-
+```
     - Plan de Pruebas SauceLabs CeibaSoft.pdf
     - ReporteBugs.pdf
+```
+Al terminar la ejecucion de las Pruebas se genera el reporte en la ruta:
+```
+target/site/serenity/index.html
+```
