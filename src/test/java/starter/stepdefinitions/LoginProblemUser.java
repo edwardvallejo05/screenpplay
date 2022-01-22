@@ -12,6 +12,7 @@ import starter.navigation.NavigateTo;
 import starter.shop.AddProductCart;
 import starter.shop.DeleteProductCart;
 import starter.shop.GetTextElements;
+import starter.shop.ProductsPageObjects;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
@@ -33,14 +34,14 @@ public class LoginProblemUser {
         theActorCalled(name).attemptsTo(
                 NavigateTo.theSauceDemoGoHomePage(),
                 DoLogin.withCredentials( "problem_user", "secret_sauce"),
-                new AddProductCart(),
-                new DeleteProductCart()
+                new AddProductCart()
         );
     }
     @Then("he could not remove the product")
     public void he_could_not_remove_the_product() {
-        theActorInTheSpotlight().should(
-                seeThat("The Button Add Car is not Visible", GetTextElements.countBadge(), equalTo("1"))
+        theActorCalled(name).attemptsTo(
+                Ensure.that(ProductsPageObjects.BADGE)
+                        .isNotDisplayed()
         );
     }
 

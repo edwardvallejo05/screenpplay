@@ -18,6 +18,10 @@ public class GetTextElements {
         return actor -> TextContent.of(ProductsPageObjects.BADGE).viewedBy(actor).asString();
     }
 
+    public static Question<String> fleeceJacket(){
+        return actor -> TextContent.of(ProductsPageObjects.FLEECE_JACKET).viewedBy(actor).asString();
+    }
+
     public static Question<String> yourOrder(){
         return actor -> TextContent.of(ProductsPageObjects.YOUR_ORDER).viewedBy(actor).asString();
     }
