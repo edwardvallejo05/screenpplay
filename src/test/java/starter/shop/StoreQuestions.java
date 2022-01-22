@@ -4,10 +4,10 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 
-public class Store implements Question<String> {
+public class StoreQuestions implements Question<String> {
 
     public static Question<String> value(){
-        return new Store();
+        return new StoreQuestions();
     }
 
     @Override
